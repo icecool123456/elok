@@ -1,0 +1,52 @@
+body{
+    margin:0;
+    
+  }
+.mainbox{
+  height:150px !important;
+  width:100% !important;
+  background-image: url('./images/bg-01.jpg');
+  border-radius: 0 0  25px 25px !important;
+  background-repeat:no-repeat !important;
+  font-size:20px !important;
+}
+.backarrow{position:fixed;
+margin-top:0;
+padding-left:20px;}
+.backarrow h2:before {
+  content: ' \2190';
+  color:white;
+
+}
+.vertical{
+display:inline-block;
+border-left:1px solid black;
+margin: 0 0px 0px 0px;
+height:50px;
+}
+
+
+  .box {
+box-shadow:
+0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+0 12.5px 10px rgba(0, 0, 0, 0.06),
+0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+0 100px 80px rgba(0, 0, 0, 0.12)
+;
+
+text-align: center;
+
+
+padding: 25px 0px 25px 0px;
+min-height: 100px;
+width: 88%;
+margin: 20px auto;
+background: white;
+border-radius: 5px;
+}
+
+a{
+text-decoration:none;
+}
