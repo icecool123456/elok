@@ -34,50 +34,46 @@
 		$isValidChecksum = verifychecksum_e($paramList, PAYTM_MERCHANT_KEY, $paytmChecksum); //will return TRUE or FALSE string.
 
 
-		if($isValidChecksum == "TRUE") {
+		if ($isValidChecksum == "TRUE") {
 			echo "<b>Checksum matched and following are the transaction details:</b>" . "<br/>";
 			if ($_POST["STATUS"] == "TXN_SUCCESS") {
 				echo "<b>Transaction status is success</b>" . "<br/>";
+				header("Location: http://localhost/elok/success");
 				//Process your transaction here as success transaction.
 				//Verify amount & order id received from Payment gateway with your application's order id and amount.
-			}
-			else {
+			} else {
 				echo "<b>Transaction status is failure</b>" . "<br/>";
 			}
-		
-			if (isset($_POST) && count($_POST)>0 )
-			{ 
+
+			if (isset($_POST) && count($_POST) > 0) {
 				$servername = "localhost";
 				$username = "root";
 				$password = "";
 				$dbname = "example";
-				
+
 				// Create connection
 				$conn = new mysqli($servername, $username, $password, $dbname);
 				// Check connection
 				if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-				} 
-				
-				$sql = "INSERT INTO payment (ORDERID,MID,TXNID,TXNAMOUNT,PAYMENTMODE,CURRENCY,TXNDATE,STATUS,RESPCODE,RESPMSG,GATEWAYNAME,BANKTXNID,BANKNAME,CHECKSUMHASH)
-				VALUES ('".$_POST['ORDERID']."','".$_POST['MID']."', '".$_POST['TXNID']."','".$_POST['TXNAMOUNT']."','".$_POST['PAYMENTMODE']."','".$_POST['CURRENCY']."','".$_POST['TXNDATE']."','".$_POST['STATUS']."','".$_POST['RESPCODE']."','".$_POST['RESPMSG']."','".$_POST['GATEWAYNAME']."','".$_POST['BANKTXNID']."','".$_POST['BANKNAME']."','".$_POST['CHECKSUMHASH']."')";
-				
-				if ($conn->query($sql) === TRUE) {
-				echo "New record created successfully";
-				} else {
-				echo "Error: " . $sql . "<br>" . $conn->error;
+					die("Connection failed: " . $conn->connect_error);
 				}
-				
+
+				$sql = "INSERT INTO payment (ORDERID,MID,TXNID,TXNAMOUNT,PAYMENTMODE,CURRENCY,TXNDATE,STATUS,RESPCODE,RESPMSG,GATEWAYNAME,BANKTXNID,BANKNAME,CHECKSUMHASH)
+				VALUES ('" . $_POST['ORDERID'] . "','" . $_POST['MID'] . "', '" . $_POST['TXNID'] . "','" . $_POST['TXNAMOUNT'] . "','" . $_POST['PAYMENTMODE'] . "','" . $_POST['CURRENCY'] . "','" . $_POST['TXNDATE'] . "','" . $_POST['STATUS'] . "','" . $_POST['RESPCODE'] . "','" . $_POST['RESPMSG'] . "','" . $_POST['GATEWAYNAME'] . "','" . $_POST['BANKTXNID'] . "','" . $_POST['BANKNAME'] . "','" . $_POST['CHECKSUMHASH'] . "')";
+
+				if ($conn->query($sql) === TRUE) {
+					echo "New record created successfully";
+				} else {
+					echo "Error: " . $sql . "<br>" . $conn->error;
+				}
+
 				$conn->close();
-				
-				foreach($_POST as $paramName => $paramValue) {
-						echo "<br/>" . $paramName . " = " . $paramValue;
+
+				foreach ($_POST as $paramName => $paramValue) {
+					echo "<br/>" . $paramName . " = " . $paramValue;
 				}
 			}
-			
-		
-		}
-		else {
+		} else {
 			echo "<b>Checksum mismatched.</b>";
 			//Process transaction as suspicious.
 		}
@@ -85,7 +81,7 @@
 		?>
 	</div>
 	<input type="button" class="btn btn-danger" onclick="printDiv('printableArea')" value="Print Recipt!" /><!-- Optional JavaScript -->
-	<input type="button" class="btn btn-success"  value="Home-Page" />
+	<input type="button" class="btn btn-success" value="Home-Page" />
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
