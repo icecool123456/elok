@@ -267,9 +267,61 @@ a{
 </div>
 
 <br><br>
+<center>
+<form method="post" action="pgRedirect.php">
 
-<center><a href="#" class="myButton">Pay</a></center><br>
-<center><a href="forbus.php" class="Button">check buses </a></center> 
+<table  border="1" style="text-align: center;">
+			<tbody >
+				<tr>
+					<th>S.No</th>
+					<th>Label</th>
+					<th>Value</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><label>ORDER_ID::*</label></td>
+					<td><?php $od= "ELOK" . rand(10000,99999999);
+					 echo $od;?>
+					<input type="hidden" name="ORDER_ID" value="<?php echo $od;?>">
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><label>Website ::*</label></td>
+					<td>
+					<?php echo"elokyan.gov.in";?>
+					</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td><label>txnAmount*</label></td>
+					<td>
+					
+				 	<input type="text" name="TXN_AMOUNT" value="<?php echo $fare;?>" readonly>
+					<input type="hidden" name="CUST_ID" value="cust1">
+					<input type="hidden" name="INDUSTRY_TYPE_ID" value="retail">
+          <input type="hidden" name="CHANNEL_ID" value="WEB">
+
+					</td>
+				
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td>
+					<button value="Book Now!" type="submit"	onclick="" type="button" class="btn btn-danger">Book Now!</button>
+						<!-- <input value="Book Now!" type="submit"	onclick=""> -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </center>
+<br><br>
+
+
+<!-- <!-- <center><a href="#" class="myButton">Pay</a></center><br> -->
+<center><a href="forbus.php" class="Button">check buses </a></center>  -->
 
 </body>
 </html>

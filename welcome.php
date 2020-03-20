@@ -171,7 +171,7 @@ hr{
  <div class="profilesection">
   <a href="profile.php"><i class='far fa-user'></i>&#160; Profile</a>
   <a href="resetpassword.php"><i class='fas fa-unlock'></i>&#160; Reset Password</a>
-  <a href="#"><i class='fa fa-money'></i>&#160; Transaction</a>
+  <a href="Transaction.php"><i class='fa fa-money'></i>&#160; Transaction</a>
   <a href="logout.php"><i class='fas fa-power-off'></i>&#160; Signout</a>
 
 </div>
@@ -180,8 +180,16 @@ hr{
 <button class="openbtn" onclick="openNav()">☰ Elokyan</button>  
 <div class="searchbox">
 <form  action="welcome2.php" method="post">
-<input type="text"  class="box" placeholder="source" name="source" value="<?php echo $source; ?>"><br>
- <input type="text"  class="box" placeholder="destination" name="destination" value="<?php echo $destination; ?>">
+<!-- <input type="text"  class="box" placeholder="source" name="source" value="<?php echo $source; ?>"><br> -->
+<select  name="source">
+  <option value="BARDI">Bardi</option>
+  <option value="LOKMAT">Lokmat</option>
+</select>
+ <!-- <input type="text"  class="box" placeholder="destination" name="destination" value="<?php echo $destination; ?>"> -->
+ <select name="destination">
+  <option value="TRUPTI">trupti</option>
+  <option value="PALLOTI">palloti</option>
+</select>
  <div class="nextbtn">
  
 <span  id ="fixedbtn"class="next round" ><font  size="20"><input type="submit" value="&#8250"></font></span>
